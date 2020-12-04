@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/user.model';
-
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private http:HttpClient) {}
 
-  private userUrl = 'https://springbootpostgresheroku.herokuapp.com/';
-  //private userUrl = '/api';
+  private userUrl = environment.APIEndpoint;
+  
 
   public getUsers() {
     return this.http.get<User[]>(this.userUrl);
